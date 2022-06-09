@@ -1,6 +1,15 @@
 bases:
 - ../../base
-namePrefix: dev-
+#namespace: my-user00
 patches:
 - replicas.yaml
 - limits.yaml
+configMapGenerator:
+- name: my-nginx-config
+  files:
+  - application.properties
+generatorOptions:
+  disableNameSuffixHash: true
+
+commonAnnotations:
+  tier: frontend
